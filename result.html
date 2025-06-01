@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast cancer Result</title>
+</head>
+
+<body>
+
+    <div class="ml-container">
+        <form action="/predict" method="POST">
+            <h2 class='container-heading'><span class="heading_font">Breast Cancer Prediction</span>
+                
+            </h2>
+            
+        <br><br><br>
+        <!-- Result -->
+		<div class="results">
+			{% if prediction==1 %}
+				<h1><span class='danger'>Oops!<br><br>You have a GREATER RISK of having breast cancer.<br><br>Please consult your doctor for a confirmed diagnosis.</span></h1>
+				<img class="gif" src="{{ url_for('static', filename='tensed.gif')}}" alt="Cancer Image">
+			{% elif prediction==0 %}
+				<h1><span class='safe'>Congratulations!<br><br>You have LOWER to NEGLIGIBLE RISK of having breast cancer.<br>Please consult your doctor for further diagnosis.</span></h1>
+				<img class="gif1" src="{{ url_for('static', filename='tenor.gif')}}" alt="Not Cancer Image">
+			{% endif %}
+		</div>
+        </form>
+
+    </div>
+   
+
+
+<style>
+
+/* Background Image */
+body {
+	background: linear-gradient(-45deg, #ee7752, #520623, #b9d5df, #055542);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* Color */
+body{
+	font-family: Arial, Helvetica,sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+
+/* Heading Font */
+
+.container-heading{
+  padding: 30px;
+  text-align: center;
+  background: #011813;
+  color: white;
+  font-size: 30px;
+  width: 100%;
+  
+  margin:-8px;
+}
+
+.container-heading img {
+  float:left;
+  width: 90px;
+  height: 90px;
+  
+  background: rgb(7, 7, 7);
+}
+.heading_font{
+    color: black;
+	font-family: 'Pacifico', cursive;
+	font-size: 50px;
+	font-weight: normal;
+}
+.footer-description {
+            
+                
+            padding: 10px;
+            text-align: center;
+            background: #011813;
+            color: white;
+            font-size: 20px;
+            
+            margin:-8px;
+ 
+    }
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</style>
+
+</body>
